@@ -1,4 +1,4 @@
-﻿# Easy Dependency Loader
+# Easy Dependency Loader
 
 A simple way to manage your dependencies and use "require" with no problems with relative paths. It is very useful to complex project structures and when it is needed to change some file from it's place.
 
@@ -28,7 +28,6 @@ It can be described in a JSON file or in a object. The EDL works exactly in the 
 
 ```sh
 EDL.setDependencies(dependencies); //As an object descriptor
-
 EDL.setDependencies('./path/to/dependencies.json'); //Path to dependencies file
 
 var myDependencies = require('./path/to/dependencies.json');
@@ -37,7 +36,7 @@ EDL.setDependencies(myDependencies); //Using an JSON module with require
 Then, you just need to call the name of module using the load() method. Is no necessary to use the relative path.
 
 ```sh
-var Module = EDL.load('ModuleName');
+var Module = EDL.load('moduleName');
 Module.doSomething();
 ```
 
@@ -46,14 +45,14 @@ Module.doSomething();
 var EDL = require('easy-dependency-loader');
 
 //Passing a JSON path
-EDM.setDependencies('./path/to/jsonfile/dependencies.json');
+EDL.setDependencies('./path/to/jsonfile/dependencies.json');
 
 //Passing a JSON module with require
 var myDependencies = require('./configs/confgis.json');
-EDM.setDependencies(myDependencies);
+EDL.setDependencies(myDependencies);
 
 //Passing an object
-EDM.setDependencies({
+EDL.setDependencies({
   "Dog": "./models/Dog.js",
   "Falcon": "./models/birds/Falcon.js",
   "Chicken": "./models/birds/Chicken.js",
@@ -61,9 +60,9 @@ EDM.setDependencies({
 });
 
 //Finally, you can call the module in other place of project
-var EDM = require('easy-dependency-loader')
-var Dog = EDM.load('Dog');
-var Worm = EDM.load('Worm');
+var EDL = require('easy-dependency-loader')
+var Dog = EDL.load('Dog');
+var Worm = EDL.load('Worm');
 Dog.bark(); 
 Worm.crawl();
 ```
