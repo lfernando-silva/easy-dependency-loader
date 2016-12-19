@@ -1,4 +1,4 @@
-# Easy Dependency Loader
+﻿# Easy Dependency Loader
 
 A simple way to manage your dependencies and use "require" with no problems with relative paths. It is very useful to complex project structures and when it is needed to change some file from it's place.
 
@@ -12,37 +12,71 @@ $ npm install --save easy-dependency-loader
 
 ### Usage
 
-Make sure you have a dependencies file: a JSON file descriptor containing all dependencies names with their respective paths from the project root folder.
+Make sure you have a dependencies list in the following format:
+
 ```sh
-//config.json
 {
+...
+    "dependency1": "path/to/dependency1",
+    "dependency2": "path/to/dependency2",
+    "dependency3": "path/to/dependency3",
+...
+}
+```
+
+It can be described in a JSON file or in a object. The EDL works exactly in the same way of require, so, every load that works with require also works with EDL.
+
+```sh
+EDL.setDependencies(dependencies); //As an object descriptor
+EDL.setDependencies('./path/to/dependencies.json'); //Path to dependencies file
+
+var myDependencies = require('./path/to/dependencies.json');
+EDL.setDependencies(myDependencies); //Using an JSON module with require
+```
+Then, you just need to call the name of module using the load() method. Is no necessary to use the relative path.
+
+```sh
+var Module = EDL.load('Dog');
+Module.doSomething();
+```
+
+### Example
+```sh
+var EDL = require('easy-dependency-loader');
+
+//Passing a JSON path
+EDM.setDependencies('./path/to/jsonfile/dependencies.json');
+
+//Passing a JSON module with require
+var myDependencies = require('./configs/confgis.json');
+EDM.setDependencies(myDependencies);
+
+//Passing an object
+EDM.setDependencies({
   "Dog": "./models/Dog.js",
   "Falcon": "./models/birds/Falcon.js",
   "Chicken": "./models/birds/Chicken.js",
   "Worm": "./models/birds/insects/Worm.js"
-}
-```
-Then, you need to set the relative path to the configs file from the project root path and call the modules using the .load method. It works exactly the same way of common require, but with no problems with relative paths: it's just call the name of the module in config descriptor file.
+});
 
-```sh
-//in the main app file, e.g., app.js
-var EDM = require('easy-dependency-loader')
-EDM.setDependenciesFile('./configs/configs.json');
-
-//in some other place on project
+//Finally, you can call the module in other place of project
 var EDM = require('easy-dependency-loader')
 var Dog = EDM.load('Dog');
+var Worm = EDM.load('Worm');
 Dog.bark(); 
+Worm.crawl();
 ```
 
 ### Contributions
 Pull requests are welcome!
 
+### Errors
+In general, problems with using this module maybe are problems with require, such wrong relative path or file type. But if not, you can open an issue and make a pull request!
+
 ### Todos
  - Tests
  - Using other types of config files, such xml.
- - Allow to set dependencies with no dependencies file.
- 
+
 License
 ----
 MIT
