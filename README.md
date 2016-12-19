@@ -71,7 +71,8 @@ Worm.crawl();
 Pull requests are welcome!
 
 ### Errors
-In general, problems with using this module maybe are problems with require, such wrong relative path or file type. But if not, you can open an issue and make a pull request!
+In general, problems with using this module maybe are problems with require, such wrong relative path or file type. 
+Make sure you are calling the right module name, passing a valid object descriptor or a relative path from the package.json.
 
 ### Todos
  - Tests
