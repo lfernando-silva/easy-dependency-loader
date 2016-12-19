@@ -28,6 +28,7 @@ It can be described in a JSON file or in a object. The EDL works exactly in the 
 
 ```sh
 EDL.setDependencies(dependencies); //As an object descriptor
+
 EDL.setDependencies('./path/to/dependencies.json'); //Path to dependencies file
 
 var myDependencies = require('./path/to/dependencies.json');
@@ -36,7 +37,7 @@ EDL.setDependencies(myDependencies); //Using an JSON module with require
 Then, you just need to call the name of module using the load() method. Is no necessary to use the relative path.
 
 ```sh
-var Module = EDL.load('Dog');
+var Module = EDL.load('ModuleName');
 Module.doSomething();
 ```
 
