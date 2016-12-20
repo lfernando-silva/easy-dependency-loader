@@ -70,7 +70,7 @@ Worm.crawl();
 
 ### Note: You also can use EDL to load core modules and modules in package.json if you want. Example:
 
-```
+```sh
 var async = EDL.load('async'); // the same of var async = require('async');
 var net = EDL.load('net');
 
