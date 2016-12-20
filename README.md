@@ -1,4 +1,5 @@
-# Easy Dependency Loader
+﻿
+# Easy Dependency Loader 0.0.6
 
 A simple way to manage your dependencies and use "require" with no problems with relative paths. It is very useful to complex project structures and when it is needed to change some file from it's place.
 
@@ -67,15 +68,32 @@ Dog.bark();
 Worm.crawl();
 ```
 
+### Note: You also can use EDL to load core modules and modules in package.json if you want. Example:
+
+```
+var async = EDL.load('async'); // the same of var async = require('async');
+var net = EDL.load('net');
+
+async.each(...)
+async.waterfall(...)
+
+var server = net.CreateServer(...).listen(...);
+
+//and so on
+
+```
+
 ### Contributions
 Pull requests are welcome!
 
 ### Errors
-In general, problems with using this module maybe are problems with require, such wrong relative path or file type. 
-Make sure you are calling the right module name, passing a valid object descriptor or a relative path from the package.json.
+In general, problems with using this module maybe are problems with require, such:
+ - Wrong relative path;
+ - Non-require file type;
+ - "Cyclic" requires (module1 requires module2, that requires module1).
 
 ### Todos
- - Tests
+ - Unit Tests
  - Using other types of config files, such xml.
 
 License

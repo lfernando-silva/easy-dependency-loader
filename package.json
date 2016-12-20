@@ -1,14 +1,17 @@
 {
   "name": "easy-dependency-loader",
-  "version": "0.0.2",
-  "description": "A simple way to manage your dependencies and use require with no problems with relative paths. It is very useful to complex project structures and when it is needed to change some file from it's place.",
+  "version": "0.0.6",
   "readmeFilename": "README.md",
   "main": "index.js",
   "author": {
     "name": "Luiz",
     "email": "lfernando-silva@hotmail.com"
   },
-  "tags": ["require","dependency","dependencies"],
+  "tags": [
+    "require",
+    "dependency",
+    "dependencies"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lfernando-silva/easy-dependency-loader.git"
@@ -16,5 +19,6 @@
   "license": "MIT",
   "engines": {
     "node": ">=4.3.0"
-  }
+  },
+  "dependencies": {}
 }
