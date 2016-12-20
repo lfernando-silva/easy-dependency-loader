@@ -1,1 +1,1 @@
-﻿module.exports = require('./lib/EasyDependencyManager.js');
+﻿module.exports = require('./lib/Loader.js');
