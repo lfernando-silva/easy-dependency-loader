@@ -77,7 +77,7 @@ var net = EDL.load('net');
 async.each(...)
 async.waterfall(...)
 
-var server = net.CreateServer(...).listen(...);
+var server = net.createServer(...).listen(...);
 
 //and so on
 
