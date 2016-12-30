@@ -1,7 +1,11 @@
 ﻿
 # Easy Dependency Loader 0.0.7
 
-A simple way to manage your dependencies and use "require" with no problems with relative paths. It is very useful to complex project structures and when it is needed to change some file from it's place.
+A simple way to manage your dependencies and use "require" with no problems with relative paths, problem also known as "relative path hell". It is very useful to:
+
+- Manage files/dependencies with complex project structures
+- When it is needed to change some file from its place.
+- Avoid the "require('../../../../myfiles/foundItFinally.js')
 
 ### Installation
 
@@ -13,7 +17,7 @@ $ npm install --save easy-dependency-loader
 
 ### Usage
 
-Make sure you have a dependencies list in the following format:
+Make sure you have a dependencies list in the following format, with paths FROM the root of the project:
 
 ```sh
 {
