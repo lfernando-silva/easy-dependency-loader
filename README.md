@@ -1,15 +1,14 @@
 ﻿
-# Easy Dependency Loader 0.0.7
+# Easy Dependency Loader 1.0.0
 
-A simple way to manage your dependencies and use "require" with no problems with relative paths, problem also known as "relative path hell". It is very useful to:
+A simple way to manage your dependencies and use "require" with no problems with relative paths. It is very useful to complex project structures and when it is needed to change some file from it's place.
 
-- Manage files/dependencies with complex project structures
-- When it is needed to change some file from its place.
-- Avoid the "require('../../../../myfiles/foundItFinally.js')
+### Change Log
+    [FEATURE] Migration to ES6 sintax
 
 ### Installation
 
-EDL requires [Node.js](https://nodejs.org/) v4+ to run.
+EDL requires [Node.js](https://nodejs.org/) v6+ to run.
 
 ```sh
 $ npm install --save easy-dependency-loader
@@ -17,7 +16,7 @@ $ npm install --save easy-dependency-loader
 
 ### Usage
 
-Make sure you have a dependencies list in the following format, with paths FROM the root of the project:
+Make sure you have a dependencies list in the following format:
 
 ```sh
 {
@@ -98,7 +97,7 @@ In general, problems with using this module maybe are problems with require, suc
 
 ### Todos
  - Unit Tests
- - Using other types of config files, such xml.
+ - Using other types of config files, such xml (why not JSON?)
 
 License
 ----
