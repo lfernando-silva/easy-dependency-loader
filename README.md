@@ -7,6 +7,8 @@ A simple way to manage your dependencies and use "require" with no problems with
     [FEATURE] Migration to ES6 sintax!
     [FEATURE] Refactoring (finally I had time to)!
     [FEATURE] Unit tests!
+    [FEATURE] Add example folder
+    [FIX] Some fixes in Readme
 
 ### Installation
 
@@ -73,7 +75,7 @@ Dog.bark()
 
 ```js
 //Lets suppose that async module is already installed
-const EDL = require('../lib/Loader.js')
+const EDL = require('easy-depenency-loader')
 const async = EDL.load('async') // the same of const async = require('async');
 const os = EDL.load('os') // the same of const os = require('os');
 
