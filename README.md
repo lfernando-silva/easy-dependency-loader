@@ -1,10 +1,12 @@
 ﻿
-# Easy Dependency Loader 1.0.0
+# Easy Dependency Loader 1.1.0
 
 A simple way to manage your dependencies and use "require" with no problems with relative paths. It is very useful to complex project structures and when it is needed to change some file from it's place.
 
 ### Change Log
-    [FEATURE] Migration to ES6 sintax
+    [FEATURE] Migration to ES6 sintax!
+    [FEATURE] Refactoring (finally I had time to)!
+    [FEATURE] Unit tests!
 
 ### Installation
 
@@ -18,7 +20,7 @@ $ npm install --save easy-dependency-loader
 
 Make sure you have a dependencies list in the following format:
 
-```sh
+```js
 {
 ...
     "dependency1": "path/to/dependency1",
@@ -30,60 +32,62 @@ Make sure you have a dependencies list in the following format:
 
 It can be described in a JSON file or in a object. The EDL works exactly in the same way of require, so, every load that works with require also works with EDL.
 
-```sh
-EDL.setDependencies(dependencies); //As an object descriptor
-EDL.setDependencies('./path/to/dependencies.json'); //Path to dependencies file
+```js
+EDL.setDependencies(dependencies) //As an object descriptor
+EDL.setDependencies('./path/from/project/root/to/dependencies.json') //Path to dependencies file
 
-var myDependencies = require('./path/to/dependencies.json');
-EDL.setDependencies(myDependencies); //Using an JSON module with require
-```
-Then, you just need to call the name of module using the load() method. Is no necessary to use the relative path.
+const myDependencies = require('./path/to/dependencies.json')
+EDL.setDependencies(myDependencies) //Using an JSON module with require
 
-```sh
-var Module = EDL.load('moduleName');
-Module.doSomething();
+//Then, you just need to call the name of module using the load() method. Is no necessary to use the relative path.
+const Module = EDL.load('moduleName')
+Module.doSomething()
 ```
 
 ### Example
-```sh
-var EDL = require('easy-dependency-loader');
+```js
+const EDL = require('easy-dependency-loader')
 
 //Passing a JSON path
-EDL.setDependencies('./path/to/jsonfile/dependencies.json');
+EDL.setDependencies('./path/to/jsonfile/dependencies.json')
 
-//Passing a JSON module with require
-var myDependencies = require('./configs/confgis.json');
-EDL.setDependencies(myDependencies);
+//Or passing a JSON module with require
+const myDependencies = require('./configs/confgis.json')
+EDL.setDependencies(myDependencies)
 
-//Passing an object
+//Or passing an object
 EDL.setDependencies({
   "Dog": "./models/Dog.js",
   "Falcon": "./models/birds/Falcon.js",
   "Chicken": "./models/birds/Chicken.js",
   "Worm": "./models/birds/insects/Worm.js"
-});
+})
 
 //Finally, you can call the module in other place of project
-var EDL = require('easy-dependency-loader')
-var Dog = EDL.load('Dog');
-var Worm = EDL.load('Worm');
-Dog.bark(); 
-Worm.crawl();
+const EDL = require('easy-dependency-loader')
+const Dog = EDL.load('Dog')
+Dog.bark()
 ```
 
-### Note: You also can use EDL to load core modules and modules in package.json if you want. Example:
+#### Note: You also can use EDL to load native modules and modules in package.json if you want. Example:
 
-```sh
-var async = EDL.load('async'); // the same of var async = require('async');
-var net = EDL.load('net');
+```js
+//Lets suppose that async module is already installed
+const EDL = require('../lib/Loader.js')
+const async = EDL.load('async') // the same of const async = require('async');
+const os = EDL.load('os') // the same of const os = require('os');
 
-async.each(...)
-async.waterfall(...)
+async.eachOf(os.cpus(), (cpu, key, next) => {
+    console.log('CPU [%s] PROPS: %j', key, cpu)
+    return next()
+})
 
-var server = net.createServer(...).listen(...);
-
-//and so on
-
+/*
+Logs something like
+CPU [0] PROPS: {"model":"Intel(R) Core(TM) ... }}
+CPU [1] PROPS: {"model":"Intel(R) Core(TM) ... }}
+...
+*/
 ```
 
 ### Contributions
@@ -91,13 +95,13 @@ Pull requests are welcome!
 
 ### Errors
 In general, problems with using this module maybe are problems with require, such:
- - Wrong relative path;
- - Non-require file type;
+ - Wrong relative path
+ - Non-requireble file (empty, not exported, not supported extension, wrong path, wrong file name...);
  - "Cyclic" requires (module1 requires module2, that requires module1).
 
 ### Todos
- - Unit Tests
- - Using other types of config files, such xml (why not JSON?)
+ - Using other types of config files, such xml (does make sense?)
+ - Feature sugestions also are welcome
 
 License
 ----
